@@ -2,6 +2,12 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import { Fraunces } from "next/font/google";
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-fraunces",
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,15 +32,27 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} h-full antialiased`}
     >
       <body>
-        <nav className="fixed top-0 z-20 w-full bg-emerald-950/80 backdrop-blur-sm px-6 py-4 flex gap-6">
-          <Link href="/" className="font-bold text-white">The Unmapped</Link>
-          <Link href="/beams/tokenization" className="text-emerald-100">Tokenization</Link>
-          <Link href="/beams/screen-readers" className="text-emerald-100">Screen Readers</Link>
+      <nav className="fixed top-0 z-20 w-full bg-emerald-950/80 backdrop-blur-sm px-8 py-4 flex items-center justify-between">
+          <Link href="/" className="font-bold text-white text-lg tracking-wide [font-family:var(--font-fraunces)]">
+            The Unmapped
+          </Link>
+          <div className="flex gap-8">
+            <Link href="/beams/tokenization" className="text-emerald-100 hover:text-white underline-offset-4 hover:underline transition-colors">
+              Tokenization
+            </Link>
+            <Link href="/beams/screen-readers" className="text-emerald-100 hover:text-white underline-offset-4 hover:underline transition-colors">
+              Screen Readers
+            </Link>
+          </div>
         </nav>
         {children}
+        <footer className="bg-emerald-950 border-t border-emerald-800 px-8 py-6 text-center text-sm text-emerald-100">
+          <p>The Unmapped · Exploring accessibility gaps in AI design</p>
+          <p className="mt-1">© {new Date().getFullYear()} Kristi Lyn Eaton</p>
+        </footer>
       </body>
     </html>
   );
