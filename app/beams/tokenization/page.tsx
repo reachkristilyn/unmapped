@@ -6,7 +6,7 @@ export default function Tokenization() {
       <article className="mx-auto max-w-2xl">
         <p className="text-emerald-300 text-sm font-semibold uppercase tracking-wide">Beam 8</p>
         <h1 className="mt-2 text-4xl font-bold [font-family:var(--font-atkinson)]">
-          Tokenisation Inequality
+          Tokenization Inequality
         </h1>
         <div className="mt-8 space-y-6 text-lg leading-relaxed text-emerald-50">
           <p>
