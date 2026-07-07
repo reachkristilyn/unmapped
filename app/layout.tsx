@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
-import { Fraunces } from "next/font/google";
+import { Atkinson_Hyperlegible } from "next/font/google";
 
-const fraunces = Fraunces({
+const atkinson = Atkinson_Hyperlegible({
+  weight: ["400", "700"],
   subsets: ["latin"],
-  variable: "--font-fraunces",
+  variable: "--font-atkinson",
 });
 
 const geistSans = Geist({
@@ -32,11 +33,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${atkinson.variable} h-full antialiased`}
     >
       <body>
       <nav className="fixed top-0 z-20 w-full bg-emerald-950/80 backdrop-blur-sm px-8 py-4 flex items-center justify-between">
-          <Link href="/" className="font-bold text-white text-lg tracking-wide [font-family:var(--font-fraunces)]">
+          <Link href="/" className="font-bold text-white text-lg tracking-wide [font-family:var(--font-atkinson)]">
             The Unmapped
           </Link>
           <div className="flex gap-8">
