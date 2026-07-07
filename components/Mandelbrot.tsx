@@ -51,13 +51,30 @@ export default function Mandelbrot() {
       scale: v.scale * 0.5,
     }));
   }
-
+  function handleRightClick(e: React.MouseEvent<HTMLCanvasElement>) {
+    e.preventDefault();
+    setView(v => ({ ...v, scale: v.scale * 2 }));
+  }
+  function handleWheel(e: React.WheelEvent<HTMLCanvasElement>) {
+    const factor = e.deltaY > 0 ? 1.2 : 0.8;
+    setView(v => ({ ...v, scale: v.scale * factor }));
+  }
   return (
-    <canvas
-      ref={canvasRef}
-      onClick={handleClick}
-      className="w-full h-full cursor-zoom-in"
-      aria-label="Interactive Mandelbrot fractal. Click to zoom."
-    />
+    <div className="relative w-full h-full">
+      <canvas
+        ref={canvasRef}
+        onClick={handleClick}
+        onContextMenu={handleRightClick}
+        onWheel={handleWheel}
+        className="w-full h-full cursor-zoom-in"
+        aria-label="Interactive Mandelbrot fractal. Click to zoom in, right-click to zoom out."
+      />
+      <button
+        onClick={() => setView({ cx: -0.75, cy: 0, scale: 1.75 })}
+        className="absolute bottom-4 right-4 rounded-lg bg-white/70 px-4 py-2 text-sm font-medium text-emerald-950"
+      >
+        Reset view
+      </button>
+    </div>
   );
 }
