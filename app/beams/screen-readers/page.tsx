@@ -1,4 +1,5 @@
 import StreamingDemo from "@/components/StreamingDemo";
+import BeamMap from "@/components/BeamMap";
 
 export default function ScreenReaders() {
   return (
