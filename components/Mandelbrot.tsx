@@ -83,15 +83,20 @@ export default function Mandelbrot() {
         className="w-full h-full cursor-zoom-in"
         aria-label="Interactive Mandelbrot fractal. Click or press plus to zoom in, right-click or minus to zoom out, arrow keys to pan."
       />
-      <button
-        onClick={() => setView({ cx: -0.75, cy: 0, scale: 1.75 })}
-        className="absolute bottom-4 right-4 rounded-lg bg-white/70 px-4 py-2 text-sm font-medium text-emerald-950"
-      >
-        Reset view
-      </button>
-      <p className="pointer-events-none absolute bottom-4 left-4 rounded-lg bg-emerald-950/70 px-3 py-2 text-xs text-emerald-100">
-        Click or + to zoom · right-click or − to zoom out · arrows to pan
-      </p>
+     <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-4 rounded-xl bg-emerald-950/80 backdrop-blur-sm px-5 py-3">
+        <p className="text-sm font-semibold text-emerald-100 [font-family:var(--font-atkinson)]">
+          Interactive Mandelbrot
+        </p>
+        <p className="pointer-events-none hidden sm:block text-sm text-emerald-200">
+          Click or + to zoom · right-click or − to zoom out · arrows to pan
+        </p>
+        <button
+          onClick={() => setView({ cx: -0.75, cy: 0, scale: 1.75 })}
+          className="rounded-lg bg-emerald-300 px-4 py-2 text-sm font-semibold text-emerald-950 hover:bg-emerald-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-300"
+        >
+          Reset view
+        </button>
+      </div>
     </div>
   );
 }
