@@ -39,7 +39,7 @@ export default function RootLayout({
       <Nav />
         {children}
         <footer className="bg-emerald-950 border-t border-emerald-800 px-8 py-6 text-center text-sm text-emerald-100">
-          <p>The Unmapped · Exploring accessibility gaps in AI &amp; the technology around it.</p>
+          <p>The Unmapped</p>
           <p className="mt-1">
             © {new Date().getFullYear()} Kristi Lyn Eaton ·{" "}
             <a href="mailto:kristi.eaton@columbia.edu" className="underline underline-offset-4 hover:text-white">
