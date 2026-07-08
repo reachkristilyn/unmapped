@@ -16,12 +16,6 @@ const upcoming = [
       <main className="min-h-screen bg-emerald-950 text-white px-6 pt-28 pb-20">
         <article className="mx-auto max-w-2xl">
           <h1 className="text-4xl font-bold [font-family:var(--font-atkinson)]">More topics in the works</h1>
-          <p className="mt-4 text-lg text-emerald-100">
-           Have a story or topic to add?{" "}
-          <a href="mailto:kristi.eaton@columbia.edu" className="underline underline-offset-4 hover:text-white">
-              Send it my way! 
-            </a>
-          </p>
           <ul className="mt-8 space-y-3">
             {upcoming.map(t => (
               <li key={t} className="flex gap-3 text-emerald-50">
@@ -31,6 +25,12 @@ const upcoming = [
             ))}
           </ul>
         </article>
+        <p className="mt-4 text-lg text-emerald-100">
+           Have a story or topic to add?{" "}
+          <a href="mailto:kristi.eaton@columbia.edu" className="underline underline-offset-4 hover:text-white">
+              Send it my way! 
+            </a>
+          </p>
       </main>
     );
   }
