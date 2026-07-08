@@ -6,6 +6,7 @@ const sizes = [
   { label: "WCAG minimum", px: 24 },
   { label: "Common real-world", px: 16 },
   { label: "Tiny", px: 8 },
+  { label: "Nearly impossible", px: 4 },
 ];
 
 export default function TargetSizeDemo() {
