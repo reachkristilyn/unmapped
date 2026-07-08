@@ -45,15 +45,19 @@ export default function Mandelbrot() {
     const aspect = w / h;
     const px = e.clientX - rect.left;
     const py = e.clientY - rect.top;
-    setView(v => ({
-      cx: v.cx + ((px / w) * 2 - 1) * v.scale * aspect,
-      cy: v.cy + ((py / h) * 2 - 1) * v.scale,
-      scale: v.scale * 0.5,
-    }));
+    setView(v => {
+      const tx = v.cx + ((px / w) * 2 - 1) * v.scale * aspect;
+      const ty = v.cy + ((py / h) * 2 - 1) * v.scale;
+      return {
+        cx: v.cx + (tx - v.cx) * 0.5,
+        cy: v.cy + (ty - v.cy) * 0.5,
+        scale: v.scale * 0.7,
+      };
+    });
   }
-    function handleRightClick(e: React.MouseEvent<HTMLCanvasElement>) {
+  function handleRightClick(e: React.MouseEvent<HTMLCanvasElement>) {
     e.preventDefault();
-    setView(v => ({ ...v, scale: v.scale * 2 }));
+    setView(v => ({ ...v, scale: v.scale * 1.4 }));
   }
     function handleWheel(e: React.WheelEvent<HTMLCanvasElement>) {
     const factor = e.deltaY > 0 ? 1.2 : 0.8;
@@ -61,8 +65,8 @@ export default function Mandelbrot() {
     }
     function handleKey(e: React.KeyboardEvent<HTMLCanvasElement>) {
       const pan = view.scale * 0.2;
-      if (e.key === "+" || e.key === "=") setView(v => ({ ...v, scale: v.scale * 0.5 }));
-      else if (e.key === "-") setView(v => ({ ...v, scale: v.scale * 2 }));
+      if (e.key === "+" || e.key === "=") setView(v => ({ ...v, scale: v.scale * 0.7 }));
+      else if (e.key === "-") setView(v => ({ ...v, scale: v.scale * 1.4 }));
       else if (e.key === "ArrowLeft") setView(v => ({ ...v, cx: v.cx - pan }));
       else if (e.key === "ArrowRight") setView(v => ({ ...v, cx: v.cx + pan }));
       else if (e.key === "ArrowUp") setView(v => ({ ...v, cy: v.cy - pan }));
