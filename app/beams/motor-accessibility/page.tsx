@@ -1,6 +1,6 @@
 import TargetSizeDemo from "@/components/TargetSizeDemo";
 import KeyboardDemo from "@/components/KeyboardDemo";
-
+import FatigueDemo from "@/components/FatigueDemo"
 export default function MotorAccessibility() {
     return (
       <main className="min-h-screen bg-emerald-950 text-white px-6 pt-28 pb-20">
@@ -22,6 +22,7 @@ export default function MotorAccessibility() {
           </div>
           <TargetSizeDemo />
           <KeyboardDemo />
+          <FatigueDemo />
         </article>
       </main>
     );
