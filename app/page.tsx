@@ -12,9 +12,9 @@ export default function Home() {
             Exploring the accessibility gaps in AI &amp; the technology around it.
           </p>
         </div>
-        <p className="pointer-events-none absolute bottom-8 left-0 right-0 text-center text-emerald-100 text-sm px-6">
+        {/*<p className="pointer-events-none absolute bottom-8 left-0 right-0 text-center text-emerald-100 text-sm px-6">
           Essays, interviews &amp; interactive demos that explain the problems and explore better solutions.
-        </p>
+  </p>*/}
       </div>
     </main>
   );
