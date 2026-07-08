@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
+import Nav from "@/components/Nav";
 import { Atkinson_Hyperlegible } from "next/font/google";
 
 const atkinson = Atkinson_Hyperlegible({
@@ -36,19 +36,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${atkinson.variable} h-full antialiased`}
     >
       <body>
-      <nav className="fixed top-0 z-20 w-full bg-emerald-950/80 backdrop-blur-sm px-8 py-4 flex items-center justify-between">
-          <Link href="/" className="font-bold text-white text-lg tracking-wide [font-family:var(--font-atkinson)]">
-            The Unmapped
-          </Link>
-          <div className="flex gap-8">
-            <Link href="/beams/tokenization" className="text-emerald-100 hover:text-white underline-offset-4 hover:underline transition-colors">
-              Tokenization
-            </Link>
-            <Link href="/beams/screen-readers" className="text-emerald-100 hover:text-white underline-offset-4 hover:underline transition-colors">
-              Screen Readers
-            </Link>
-          </div>
-        </nav>
+      <Nav />
         {children}
         <footer className="bg-emerald-950 border-t border-emerald-800 px-8 py-6 text-center text-sm text-emerald-100">
           <p>The Unmapped · Exploring accessibility gaps in AI design</p>
