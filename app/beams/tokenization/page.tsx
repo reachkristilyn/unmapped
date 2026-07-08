@@ -10,22 +10,15 @@ export default function Tokenization() {
         </h1>
         <div className="mt-8 space-y-6 text-lg leading-relaxed text-emerald-50">
           <p>
-            Before an AI model reads a single word you write, it chops your
-            text into pieces called tokens. For English, the pieces are
-            generous. A common word is often one token. For many other
-            languages, the same sentence shatters into far more fragments.
+          Before an AI model reads your words, it breaks them into pieces called tokens. 
+          Because today's tokenizers are optimized around English, the same sentence often requires many more tokens in other languages.
           </p>
           <p>
-            This is not a cosmetic difference. More tokens means higher cost
-            per message, less room in the context window, and often worse
-            output quality. Two people asking the same question in different
-            languages are not paying the same price or getting the same
-            machine.
+          That difference affects cost, context length, and often the quality of the response. Two people asking the same question in different 
+          languages may not receive the same value from the same AI model.
           </p>
           <p>
-            The unfairness is baked in before training even begins. Tokenizers
-            are built from data that overrepresents English, so every other
-            language inherits the leftovers.
+          The demo below compares how the same sentence is tokenized across languages.
           </p>
         </div>
         <TokenDemo />

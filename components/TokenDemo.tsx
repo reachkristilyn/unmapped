@@ -18,8 +18,8 @@ export default function TokenDemo() {
         Same sentence, Different Price
       </h2>
       <p className="mt-2 text-emerald-100 text-sm">
-        Token counts below use the GPT tokenizer. Other models differ, but the
-        pattern holds.
+      See how the same sentence is tokenized across different languages. Counts use OpenAI's GPT tokenizer. 
+      Other models vary, but the pattern remains.
       </p>
       <ul className="mt-4 space-y-2">
         {samples.map(s => (
