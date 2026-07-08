@@ -17,10 +17,10 @@ const upcoming = [
         <article className="mx-auto max-w-2xl">
           <h1 className="text-4xl font-bold [font-family:var(--font-atkinson)]">More topics in the works</h1>
           <p className="mt-4 text-lg text-emerald-100">
-           Have a topic for discussion?
+           Have a story or topic to add?{" "}
           </p>
           <a href="mailto:kristi.eaton@columbia.edu" className="underline underline-offset-4 hover:text-white">
-              Contact
+              Send it my way! 
             </a>
           </p>
           <ul className="mt-8 space-y-3">
