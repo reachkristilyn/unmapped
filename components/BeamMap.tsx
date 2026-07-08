@@ -5,17 +5,28 @@ export default function BeamMap({ items }: { items: string[] }) {
           The map
         </h2>
         <p className="mt-2 text-emerald-100 text-sm">
-          What better looks like. Naming the gap is half the work; here is the
-          other half.
+          What better looks like, one waypoint at a time.
         </p>
-        <ul className="mt-4 space-y-3">
+        <ol className="mt-6 relative border-l-2 border-dashed border-emerald-500 ml-4 space-y-8">
           {items.map((item, i) => (
-            <li key={i} className="flex gap-3 text-emerald-50">
-              <span aria-hidden="true" className="text-emerald-300">→</span>
-              <span>{item}</span>
+            <li key={i} className="relative pl-8">
+              <span
+                aria-hidden="true"
+                className="absolute -left-[17px] top-0 flex h-8 w-8 items-center justify-center rounded-full bg-emerald-300 font-bold text-emerald-950"
+              >
+                {i + 1}
+              </span>
+              <p className="text-emerald-50 pt-1">{item}</p>
             </li>
           ))}
-        </ul>
+          <li className="relative pl-8">
+            <span
+              aria-hidden="true"
+              className="absolute -left-[13px] top-1 h-6 w-6 rounded-full border-2 border-emerald-300"
+            />
+            <p className="text-emerald-300 font-semibold pt-1">Mapped.</p>
+          </li>
+        </ol>
       </section>
     );
   }
