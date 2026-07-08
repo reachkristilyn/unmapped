@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 const links = [
   { href: "/beams/tokenization", label: "Tokenization" },
@@ -10,7 +12,12 @@ const links = [
 ];
 
 export default function Nav() {
-  const [open, setOpen] = useState(false);
+    const pathname = usePathname();
+
+    useEffect(() => {
+      setOpen(false);
+    }, [pathname]);
+    const [open, setOpen] = useState(false);
 
   return (
     <nav className="fixed top-0 z-20 w-full bg-emerald-950/80 backdrop-blur-sm px-8 py-4">
