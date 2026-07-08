@@ -58,16 +58,6 @@ export default function Mandelbrot() {
   function handleWheel(e: React.WheelEvent<HTMLCanvasElement>) {
     const factor = e.deltaY > 0 ? 1.2 : 0.8;
     setView(v => ({ ...v, scale: v.scale * factor }));
-    function handleKey(e: React.KeyboardEvent<HTMLCanvasElement>) {
-      const pan = view.scale * 0.2;
-      if (e.key === "+" || e.key === "=") setView(v => ({ ...v, scale: v.scale * 0.5 }));
-      else if (e.key === "-") setView(v => ({ ...v, scale: v.scale * 2 }));
-      else if (e.key === "ArrowLeft") setView(v => ({ ...v, cx: v.cx - pan }));
-      else if (e.key === "ArrowRight") setView(v => ({ ...v, cx: v.cx + pan }));
-      else if (e.key === "ArrowUp") setView(v => ({ ...v, cy: v.cy - pan }));
-      else if (e.key === "ArrowDown") setView(v => ({ ...v, cy: v.cy + pan }));
-      else return;
-      e.preventDefault();
     }
     function handleKey(e: React.KeyboardEvent<HTMLCanvasElement>) {
       const pan = view.scale * 0.2;
