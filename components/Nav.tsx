@@ -6,6 +6,7 @@ const links = [
   { href: "/beams/tokenization", label: "Tokenization" },
   { href: "/beams/screen-readers", label: "Screen Readers" },
   { href: "/beams/motor-accessibility", label: "Motor Accessibility" },
+  { href: "/map", label: "The Full Map" }
 ];
 
 export default function Nav() {

@@ -39,7 +39,13 @@ export default function RootLayout({
       <Nav />
         {children}
         <footer className="bg-emerald-950 border-t border-emerald-800 px-8 py-6 text-center text-sm text-emerald-100">
-          <p>© {new Date().getFullYear()} Kristi Lyn Eaton</p>
+        <p>The Unmapped · Exploring accessibility gaps in AI &amp; the technology around it.</p></p>
+          <p>© {new Date().getFullYear()} Kristi Lyn Eaton 
+          className="mt-1">
+            <a href="mailto:kristi.eaton@columbia.edu" className="underline underline-offset-4 hover:text-white">
+            · Contact
+            </a>
+          </p>
         </footer>
       </body>
     </html>
