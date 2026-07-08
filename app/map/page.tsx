@@ -24,13 +24,13 @@ const upcoming = [
               </li>
             ))}
           </ul>
-        </article>
-        <p className="mt-4 text-lg text-emerald-100">
+          <p className="mt-4 text-lg text-emerald-100">
            Have a story or topic to add?{" "}
           <a href="mailto:kristi.eaton@columbia.edu" className="underline underline-offset-4 hover:text-white">
               Send it my way! 
             </a>
           </p>
+        </article>
       </main>
     );
   }
