@@ -5,6 +5,7 @@ import Link from "next/link";
 const links = [
   { href: "/beams/tokenization", label: "Tokenization" },
   { href: "/beams/screen-readers", label: "Screen Readers" },
+  { href: "/beams/motor-accessibility", label: "Motor Accessibility" },
 ];
 
 export default function Nav() {
