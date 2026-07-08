@@ -22,7 +22,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "The Unmapped",
-  description: "Exploring the accessibility gaps in AI and the tech around it.",
+  description: "Exploring the accessibility gaps in AI and the technology around it.",
 };
 
 export default function RootLayout({
@@ -39,12 +39,7 @@ export default function RootLayout({
       <Nav />
         {children}
         <footer className="bg-emerald-950 border-t border-emerald-800 px-8 py-6 text-center text-sm text-emerald-100">
-          <p>The Unmapped · Exploring the accessibility gaps in AI and the tech around it.</p>
-          <p className="mt-3 text-emerald-800 max-w-xl">
-          Essays, interviews, and hands-on demos about who gets left out
-          and how to design and build better.
-          </p>
-          <p className="mt-1">© {new Date().getFullYear()} Kristi Lyn Eaton</p>
+          <p>© {new Date().getFullYear()} Kristi Lyn Eaton</p>
         </footer>
       </body>
     </html>
