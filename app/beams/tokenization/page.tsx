@@ -1,4 +1,5 @@
 import TokenDemo from "@/components/TokenDemo";
+import BeamMap from "@/components/BeamMap";
 
 export default function Tokenization() {
   return (
@@ -22,6 +23,12 @@ export default function Tokenization() {
           </p>
         </div>
         <TokenDemo />
+        <BeamMap items={[
+          "Build tokenizers on genuinely multilingual data so no language inherits the leftovers.",
+          "Price by meaning delivered, not tokens consumed, so two people asking the same question pay the same.",
+          "Report token efficiency across languages as a published benchmark, the way models report accuracy.",
+          "Explore byte-level and character-level approaches that remove the vocabulary bottleneck entirely.",
+        ]} />
       </article>
     </main>
   );
