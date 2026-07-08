@@ -51,11 +51,11 @@ export default function Mandelbrot() {
       scale: v.scale * 0.5,
     }));
   }
-  function handleRightClick(e: React.MouseEvent<HTMLCanvasElement>) {
+    function handleRightClick(e: React.MouseEvent<HTMLCanvasElement>) {
     e.preventDefault();
     setView(v => ({ ...v, scale: v.scale * 2 }));
   }
-  function handleWheel(e: React.WheelEvent<HTMLCanvasElement>) {
+    function handleWheel(e: React.WheelEvent<HTMLCanvasElement>) {
     const factor = e.deltaY > 0 ? 1.2 : 0.8;
     setView(v => ({ ...v, scale: v.scale * factor }));
     }
@@ -70,7 +70,7 @@ export default function Mandelbrot() {
       else return;
       e.preventDefault();
     }
-  }
+
   return (
     <div className="relative w-full h-full">
      <canvas
