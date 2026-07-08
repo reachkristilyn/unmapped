@@ -58,16 +58,30 @@ export default function Mandelbrot() {
   function handleWheel(e: React.WheelEvent<HTMLCanvasElement>) {
     const factor = e.deltaY > 0 ? 1.2 : 0.8;
     setView(v => ({ ...v, scale: v.scale * factor }));
+    function handleKey(e: React.KeyboardEvent<HTMLCanvasElement>) {
+      const pan = view.scale * 0.2;
+      if (e.key === "+" || e.key === "=") setView(v => ({ ...v, scale: v.scale * 0.5 }));
+      else if (e.key === "-") setView(v => ({ ...v, scale: v.scale * 2 }));
+      else if (e.key === "ArrowLeft") setView(v => ({ ...v, cx: v.cx - pan }));
+      else if (e.key === "ArrowRight") setView(v => ({ ...v, cx: v.cx + pan }));
+      else if (e.key === "ArrowUp") setView(v => ({ ...v, cy: v.cy - pan }));
+      else if (e.key === "ArrowDown") setView(v => ({ ...v, cy: v.cy + pan }));
+      else return;
+      e.preventDefault();
+    }
+
   }
   return (
     <div className="relative w-full h-full">
-      <canvas
+     <canvas
         ref={canvasRef}
         onClick={handleClick}
         onContextMenu={handleRightClick}
         onWheel={handleWheel}
+        onKeyDown={handleKey}
+        tabIndex={0}
         className="w-full h-full cursor-zoom-in"
-        aria-label="Interactive Mandelbrot fractal. Click to zoom in, right-click to zoom out."
+        aria-label="Interactive Mandelbrot fractal. Click or press plus to zoom in, right-click or minus to zoom out, arrow keys to pan."
       />
       <button
         onClick={() => setView({ cx: -0.75, cy: 0, scale: 1.75 })}
@@ -75,6 +89,9 @@ export default function Mandelbrot() {
       >
         Reset view
       </button>
+      <p className="pointer-events-none absolute bottom-4 left-4 rounded-lg bg-emerald-950/70 px-3 py-2 text-xs text-emerald-100">
+        Click or + to zoom · right-click or − to zoom out · arrows to pan
+      </p>
     </div>
   );
 }
