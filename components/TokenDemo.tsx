@@ -15,7 +15,7 @@ export default function TokenDemo() {
   return (
     <div className="mt-10 rounded-2xl bg-emerald-900 p-6">
       <h2 className="text-2xl font-bold [font-family:var(--font-atkinson)]">
-        See it yourself
+        Same sentence, Different Price
       </h2>
       <p className="mt-2 text-emerald-100 text-sm">
         Token counts below use the GPT tokenizer. Other models differ, but the
