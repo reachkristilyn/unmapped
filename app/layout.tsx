@@ -36,6 +36,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${atkinson.variable} h-full antialiased`}
     >
       <body>
+      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-white focus:text-emerald-950 focus:px-4 focus:py-2 focus:z-50">Skip to content</a>
       <Nav />
         {children}
         <footer className="bg-emerald-950 border-t border-emerald-800 px-8 py-6 text-center text-sm text-emerald-100">

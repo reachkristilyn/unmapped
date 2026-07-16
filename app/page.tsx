@@ -2,8 +2,8 @@ import Mandelbrot from "@/components/Mandelbrot";
 
 export default function Home() {
   return (
-    <main className="relative h-screen bg-black text-white">
-      <div className="absolute inset-0">
+<main id="main" className="relative h-screen bg-black text-white">
+        <div className="absolute inset-0">
         <Mandelbrot />
       </div>
       <div className="pointer-events-none relative z-10 flex h-full flex-col items-center justify-center text-center px-6">
