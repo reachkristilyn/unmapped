@@ -13,7 +13,7 @@ const upcoming = [
   
   export default function FullMap() {
     return (
-      <main className="min-h-screen bg-emerald-950 text-white px-6 pt-28 pb-20">
+      <main id="main" className="min-h-screen bg-emerald-950 text-white px-6 pt-28 pb-20">
         <article className="mx-auto max-w-2xl">
           <h1 className="text-4xl font-bold [font-family:var(--font-atkinson)]">More topics in the works</h1>
           <ul className="mt-8 space-y-3">
