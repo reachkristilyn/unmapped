@@ -1,6 +1,8 @@
 import TokenDemo from "@/components/TokenDemo";
 import BeamMap from "@/components/BeamMap";
 
+export const metadata = { title: "Tokenization Inequality" };
+
 export default function Tokenization() {
   return (
     <main id="main" className="min-h-screen bg-emerald-950 text-white px-6 pt-28 pb-20">

@@ -21,8 +21,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "The Unmapped",
-  description: "Exploring the accessibility gaps in AI and the technology around it.",
+  title: { default: "The Unmapped", template: "%s — The Unmapped" },
+    description: "Exploring the accessibility gaps in AI and the technology around it.",
 };
 
 export default function RootLayout({

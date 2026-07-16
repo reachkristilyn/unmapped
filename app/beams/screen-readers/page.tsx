@@ -1,6 +1,8 @@
 import StreamingDemo from "@/components/StreamingDemo";
 import BeamMap from "@/components/BeamMap";
 
+export const metadata = { title: "Screen Readers" };
+
 export default function ScreenReaders() {
   return (
     <main id="main" className="min-h-screen bg-emerald-950 text-white px-6 pt-28 pb-20">
