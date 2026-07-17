@@ -4,9 +4,9 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 const links = [
-  { href: "/beams/tokenization", label: "Tokenization" },
-  { href: "/beams/screen-readers", label: "Screen Readers" },
-  { href: "/beams/motor-accessibility", label: "Motor Accessibility" },
+  { href: "/gaps/tokenization", label: "Tokenization" },
+  { href: "/gaps/screen-readers", label: "Screen Readers" },
+  { href: "/gaps/motor-accessibility", label: "Motor Accessibility" },
   { href: "/map", label: "More Topics" }
 ];
 

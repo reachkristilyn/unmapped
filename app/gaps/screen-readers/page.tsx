@@ -1,5 +1,5 @@
 import StreamingDemo from "@/components/StreamingDemo";
-import BeamMap from "@/components/BeamMap";
+import Waypoints from "@/components/Waypoints";
 
 export const metadata = { title: "Screen Readers" };
 
@@ -21,7 +21,7 @@ export default function ScreenReaders() {
           </p>
         </div>
         <StreamingDemo /> 
-        <BeamMap items={[
+        <Waypoints={[
           "Announce complete thoughts, not every token. Batch streaming updates into stable, readable chunks.",
           "Strip markdown symbols from what gets read aloud. Asterisks are formatting, not content.",
           "Give users control over when and how much is announced, instead of deciding for them.",

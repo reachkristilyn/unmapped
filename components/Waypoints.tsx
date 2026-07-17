@@ -1,4 +1,4 @@
-export default function BeamMap({ items }: { items: string[] }) {
+export default function Waypoints({ items }: { items: string[] }) {
     return (
       <section className="mt-10 rounded-2xl border border-emerald-700 p-6">
         <h2 className="text-2xl font-bold [font-family:var(--font-atkinson)]">

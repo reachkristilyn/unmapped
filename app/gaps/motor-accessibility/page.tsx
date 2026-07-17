@@ -1,7 +1,7 @@
 import TargetSizeDemo from "@/components/TargetSizeDemo";
 import KeyboardDemo from "@/components/KeyboardDemo";
 import FatigueDemo from "@/components/FatigueDemo";
-import BeamMap from "@/components/BeamMap";
+import Waypoints from "@/components/Waypoints";
 
 export const metadata = { title: "Motor Accessibility" };
 
@@ -27,7 +27,7 @@ export default function MotorAccessibility() {
           <TargetSizeDemo />
           <KeyboardDemo />
           <FatigueDemo />
-          <BeamMap items={[
+          <Waypoints={[
           "Meet target size minimums as a floor, not a ceiling. Fingers, tremors, and pointers all need room.",
           "Build with semantic HTML so every assistive device can reach every control.",
           "Count the actions your design demands, then cut them. Every click is a cost someone pays in effort.",

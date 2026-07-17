@@ -1,3 +1,5 @@
+export const metadata = { title: "More Topics" };
+
 const upcoming = [
     "Alternative input modalities",
     "Cognitive load and plain language",
@@ -11,8 +13,6 @@ const upcoming = [
     "Assistive tech, banned by proxy",
   ];
   
-  export const metadata = { title: "More Topics" };
-
   export default function FullMap() {
     return (
       <main id="main" className="min-h-screen bg-emerald-950 text-white px-6 pt-28 pb-20">

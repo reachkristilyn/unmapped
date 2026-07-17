@@ -1,5 +1,5 @@
 import TokenDemo from "@/components/TokenDemo";
-import BeamMap from "@/components/BeamMap";
+import Waypoints from "@/components/Waypoints";
 
 export const metadata = { title: "Tokenization Inequality" };
 
@@ -25,7 +25,7 @@ export default function Tokenization() {
           </p>
         </div>
         <TokenDemo />
-        <BeamMap items={[
+        <Waypoints={[
           "Build tokenizers on genuinely multilingual data so no language inherits the leftovers.",
           "Price by meaning delivered, not tokens consumed, so two people asking the same question pay the same.",
           "Report token efficiency across languages as a published benchmark, the way models report accuracy.",
