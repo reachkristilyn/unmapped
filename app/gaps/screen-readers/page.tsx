@@ -21,7 +21,7 @@ export default function ScreenReaders() {
           </p>
         </div>
         <StreamingDemo /> 
-        <Waypoints={[
+        <Waypoints items={[
           "Announce complete thoughts, not every token. Batch streaming updates into stable, readable chunks.",
           "Strip markdown symbols from what gets read aloud. Asterisks are formatting, not content.",
           "Give users control over when and how much is announced, instead of deciding for them.",
