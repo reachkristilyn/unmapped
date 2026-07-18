@@ -17,7 +17,7 @@ export default function Home() {
         <Mandelbrot />
       </div>
       <div className="pointer-events-none relative z-10 flex h-full flex-col items-center justify-center text-center px-6">
-        <div className="rounded-2xl bg-white/70 backdrop-blur-sm px-10 py-8">
+        <div className="rounded-2xl bg-white/70 backdrop-blur-sm px-6 py-4">
         <h1 className="text-5xl font-bold text-emerald-950 [font-family:var(--font-atkinson)]">The Unmapped</h1>          <p className="mt-4 text-lg text-emerald-900 max-w-xl">
             Exploring the accessibility gaps in AI &amp; the technology around it.
           </p>
