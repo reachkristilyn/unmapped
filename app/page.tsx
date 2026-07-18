@@ -26,19 +26,20 @@ export default function Home() {
           Essays, interviews &amp; interactive demos that explain the problems and explore better solutions.
   </p>*/}
       </div>
-      <section className="relative z-10 bg-emerald-950 px-6 py-16">
-        <ul className="mx-auto max-w-5xl grid gap-8 sm:grid-cols-2 lg:grid-cols-3 list-none">
-          {tiles.map(t => (
-            <li key={t.title} className="relative aspect-square rounded-2xl overflow-hidden">
+      <section className="relative z-10 bg-emerald-950">
+        <ul className="grid gap-0 sm:grid-cols-2 lg:grid-cols-3 list-none">          {tiles.map(t => (
+            <li key={t.title} className="relative aspect-square overflow-hidden">
               <MandelbrotTile cx={t.cx} cy={t.cy} scale={t.scale} hue={t.hue} />
               {t.href ? (
                 <a href={t.href}
-                  className="absolute bottom-3 left-3 rounded-lg bg-emerald-950/90 px-3 py-1.5 text-white font-semibold underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white [font-family:var(--font-atkinson)]">
-                  {t.title}
-                </a>
-              ) : (
-                <p className="absolute bottom-3 left-3 rounded-lg bg-emerald-950/75 px-3 py-1.5 text-emerald-200 text-sm">
-                  {t.title} · uncharted
+                  className="absolute inset-0 flex items-center justify-center focus-visible:outline-4 focus-visible:-outline-offset-4 focus-visible:outline-white">
+                    <span className="rounded-lg bg-emerald-950/90 px-3 py1.5 text-white text-xl font-semibold [font-family:var(--font-atkinson)]">
+                      {t.title}
+                    </span>
+                    </a>
+              ) : ( 
+                <p className="absolute inset-0 flex items-center justify-center">
+                  <span className="rounded-lg bg-emerald-950/75 px-3 py-1.5 text-emerald-200 text-sm">{t.title} • uncharted</span>
                 </p>
               )}
             </li>
