@@ -25,7 +25,7 @@ export default function Tokenization() {
           </p>
         </div>
         <TokenDemo />
-        <Waypoints={[
+        <Waypoints items={[
           "Build tokenizers on genuinely multilingual data so no language inherits the leftovers.",
           "Price by meaning delivered, not tokens consumed, so two people asking the same question pay the same.",
           "Report token efficiency across languages as a published benchmark, the way models report accuracy.",
