@@ -12,7 +12,7 @@ const tiles = [
 export default function Home() {
   return (
 <main id="main" className="bg-black text-white">
-      <div className="relative h-[85vh]">
+      <div className="relative h-[60vh]">
       <div className="absolute inset-0" aria-hidden="true">
           <MandelbrotTile cx={-0.75} cy={0} scale={1.75} hue={160} />
         </div>
