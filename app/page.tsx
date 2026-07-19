@@ -1,4 +1,3 @@
-import Mandelbrot from "@/components/Mandelbrot";
 import MandelbrotTile from "@/components/MandelbrotTile";
 
 const tiles = [
@@ -14,8 +13,8 @@ export default function Home() {
   return (
 <main id="main" className="bg-black text-white">
       <div className="relative h-[85vh]">
-        <div className="absolute inset-0">
-          <Mandelbrot />
+      <div className="absolute inset-0" aria-hidden="true">
+          <MandelbrotTile cx={-0.75} cy={0} scale={1.75} hue={160} />
         </div>
       <div className="pointer-events-none relative z-10 flex h-full flex-col items-center justify-center text-center px-6">
         <div className="rounded-2xl bg-white/70 backdrop-blur-sm px-4 py-3">
@@ -28,20 +27,21 @@ export default function Home() {
   </p>*/}
       </div>
       </div>
-      <section className="relative z-10 bg-emerald-950">
-        <ul className="grid gap-0 sm:grid-cols-2 lg:grid-cols-3 list-none">          {tiles.map(t => (
-            <li key={t.title} className="relative aspect-square overflow-hidden">
+      <section aria-label="The gaps" className="relative z-10 bg-emerald-950 py-10">
+        <ul className="flex gap-0 overflow-x-auto snap-x snap-mandatory list-none scrollbar-thin">
+          {tiles.map(t => (
+            <li key={t.title} className="relative snap-start shrink-0 w-[45vw] sm:w-[30vw] lg:w-[22vw] aspect-square overflow-hidden">
               <MandelbrotTile cx={t.cx} cy={t.cy} scale={t.scale} hue={t.hue} />
               {t.href ? (
                 <a href={t.href}
                   className="absolute inset-0 flex items-center justify-center focus-visible:outline-4 focus-visible:-outline-offset-4 focus-visible:outline-white">
-                    <span className="rounded-lg bg-emerald-950/90 px-3 py-1.5 text-white text-xl font-semibold [font-family:var(--font-atkinson)]">
-                      {t.title}
-                    </span>
-                    </a>
-              ) : ( 
+                  <span className="rounded-lg bg-emerald-950/90 px-3 py-1.5 text-white text-center font-semibold [font-family:var(--font-atkinson)]">
+                    {t.title}
+                  </span>
+                </a>
+              ) : (
                 <p className="absolute inset-0 flex items-center justify-center">
-                  <span className="rounded-lg bg-emerald-950/75 px-3 py-1.5 text-emerald-200 text-sm">{t.title} • uncharted</span>
+                  <span className="rounded-lg bg-emerald-950/75 px-3 py-1.5 text-emerald-200 text-sm text-center">{t.title} · uncharted</span>
                 </p>
               )}
             </li>
