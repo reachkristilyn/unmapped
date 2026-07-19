@@ -12,10 +12,11 @@ const tiles = [
 
 export default function Home() {
   return (
-<main id="main" className="relative h-[85vh] bg-black text-white">
+<main id="main" className="bg-black text-white">
+      <div className="relative h-[85vh]">
         <div className="absolute inset-0">
-        <Mandelbrot />
-      </div>
+          <Mandelbrot />
+        </div>
       <div className="pointer-events-none relative z-10 flex h-full flex-col items-center justify-center text-center px-6">
         <div className="rounded-2xl bg-white/70 backdrop-blur-sm px-4 py-3">
         <h1 className="text-5xl font-bold text-emerald-950 [font-family:var(--font-atkinson)]">The Unmapped</h1>          <p className="mt-4 text-lg text-emerald-900 max-w-xl">
@@ -26,6 +27,7 @@ export default function Home() {
           Essays, interviews &amp; interactive demos that explain the problems and explore better solutions.
   </p>*/}
       </div>
+      </div>
       <section className="relative z-10 bg-emerald-950">
         <ul className="grid gap-0 sm:grid-cols-2 lg:grid-cols-3 list-none">          {tiles.map(t => (
             <li key={t.title} className="relative aspect-square overflow-hidden">
@@ -33,7 +35,7 @@ export default function Home() {
               {t.href ? (
                 <a href={t.href}
                   className="absolute inset-0 flex items-center justify-center focus-visible:outline-4 focus-visible:-outline-offset-4 focus-visible:outline-white">
-                    <span className="rounded-lg bg-emerald-950/90 px-3 py1.5 text-white text-xl font-semibold [font-family:var(--font-atkinson)]">
+                    <span className="rounded-lg bg-emerald-950/90 px-3 py-1.5 text-white text-xl font-semibold [font-family:var(--font-atkinson)]">
                       {t.title}
                     </span>
                     </a>
