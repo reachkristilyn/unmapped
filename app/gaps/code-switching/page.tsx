@@ -17,13 +17,15 @@ export default function CodeSwitching() {
           because that blend is how they actually think and connect. Linguists call it code-switching.
           </p>
           <p>
-          Most AI systems assume one language per input. A language detector picks the dominant one and routes everything through it, 
-          so the switched-in words get treated as noise, misspellings, or the wrong language entirely. Speech recognition stumbles 
-          hardest at the switch points. And because tokenizers are built around a single dominant language, the other languages 
-          fragment into far more tokens, the same inequality explored in the Tokenization beam.
+          Most AI systems assume one language per input. A detector picks the dominant one and routes everything through it, 
+          so the words from your other languages get treated as noise or errors. Speech recognition stumbles hardest right at 
+          the switch points, where one language hands off to the next. Fluency in more than one language ends up reading to the 
+          machine as a mistake.
           </p>
           <p>
-          The demo below shows what happens to one code-switched sentence when a tokenizer built for a single language takes it apart.
+          The demo below shows one small, everyday version of this. Your browser has a spellchecker set to a single language. 
+          Type a sentence that moves between languages, and watch it flag every word that doesn't belong to the one it was 
+          told to expect.
           </p>
         </div>
         <CodeSwitchDemo />

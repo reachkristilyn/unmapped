@@ -1,67 +1,60 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import { encode, decode } from "gpt-tokenizer";
+import { useState } from "react";
 
-const PRESETS = {
-  english: "I am going to the store to buy some bread and milk for dinner.",
-  switched: "Voy a la store para comprar un peu de bread y leche for la cena.",
-};
+const LANGS = [
+  { code: "en", label: "English" },
+  { code: "es", label: "Spanish" },
+  { code: "fr", label: "French" },
+];
+
+const SENTENCE = "Oui, je suis fatiguée, pero I slept bien. ¿Quieres una cerveza, ou should we get du vin?";
 
 export default function CodeSwitchDemo() {
-  const [text, setText] = useState(PRESETS.switched);
-
-  const { chips, tokenCount, wordCount, ratio } = useMemo(() => {
-    const ids = text ? encode(text) : [];
-    const chips = ids.map((id) => decode([id]));
-    const words = text.trim() ? text.trim().split(/\s+/).length : 0;
-    return {
-      chips,
-      tokenCount: ids.length,
-      wordCount: words,
-      ratio: words ? (ids.length / words).toFixed(2) : "0",
-    };
-  }, [text]);
+  const [lang, setLang] = useState("en");
+  const [text, setText] = useState(SENTENCE);
+  const current = LANGS.find((l) => l.code === lang)?.label;
 
   return (
     <section className="mt-10 rounded-xl border border-emerald-800 bg-emerald-900/40 p-6">
-      <div className="flex flex-wrap gap-2">
-        <button
-          onClick={() => setText(PRESETS.english)}
-          className="rounded-md border border-emerald-700 px-3 py-1 text-sm text-emerald-100 hover:bg-emerald-800"
-        >
-          English only
-        </button>
-        <button
-          onClick={() => setText(PRESETS.switched)}
-          className="rounded-md border border-emerald-700 px-3 py-1 text-sm text-emerald-100 hover:bg-emerald-800"
-        >
-          Code-switched
-        </button>
-      </div>
+      <p className="text-sm text-emerald-200">
+        Tell the spellchecker one language, then click into the box. Everything
+        outside that language gets flagged as a mistake.
+      </p>
 
-      <label htmlFor="cs-input" className="sr-only">Sentence to tokenize</label>
-      <textarea
-        id="cs-input"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        rows={3}
-        className="mt-4 w-full rounded-md border border-emerald-700 bg-emerald-950 p-3 text-emerald-50 [font-family:var(--font-atkinson)]"
-      />
-
-      <div className="mt-4 flex flex-wrap gap-1" aria-hidden="true">
-        {chips.map((piece, i) => (
-          <span
-            key={i}
-            className="rounded border border-emerald-700 bg-emerald-800/50 px-1.5 py-0.5 font-mono text-sm text-emerald-50"
+      <div className="mt-4 flex flex-wrap gap-2" role="group" aria-label="Spellcheck language">
+        {LANGS.map((l) => (
+          <button
+            key={l.code}
+            onClick={() => setLang(l.code)}
+            aria-pressed={lang === l.code}
+            className={`rounded-md border px-3 py-1 text-sm ${
+              lang === l.code
+                ? "border-emerald-400 bg-emerald-800 text-white"
+                : "border-emerald-700 text-emerald-100 hover:bg-emerald-800"
+            }`}
           >
-            {piece.replace(/ /g, "\u00b7")}
-          </span>
+            {l.label}
+          </button>
         ))}
       </div>
 
-      <p className="mt-4 text-sm text-emerald-200" aria-live="polite">
-        {wordCount} words became {tokenCount} tokens ({ratio} tokens per word).
+      <label htmlFor="cs-input" className="sr-only">Sentence to spell-check</label>
+      <textarea
+        key={lang}
+        id="cs-input"
+        lang={lang}
+        spellCheck={true}
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        rows={3}
+        className="mt-4 w-full rounded-md border border-emerald-700 bg-emerald-950 p-3 text-lg text-emerald-50 [font-family:var(--font-atkinson)]"
+      />
+
+      <p className="mt-3 text-sm text-emerald-300" aria-live="polite">
+        Spellcheck set to <span className="font-semibold">{current}</span>. What
+        gets flagged depends on your browser and operating system, so this is an
+        illustration, not a measurement.
       </p>
     </section>
   );
