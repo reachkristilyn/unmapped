@@ -1,61 +1,67 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import { franc, francAll } from "franc-min";
 
-const LANGS = [
-  { code: "en", label: "English" },
-  { code: "es", label: "Spanish" },
-  { code: "fr", label: "French" },
-];
-
-const SENTENCE = "Oui, je suis fatiguée, pero I slept bien. ¿Quieres una cerveza, ou should we get du vin?";
+const NAMES: Record<string, string> = { eng: "English", spa: "Spanish", fra: "French" };
+const ONLY = ["eng", "spa", "fra"];
+const DEFAULT = "Honestly je suis so tired hoy, pero let's still go de todos modos.";
 
 export default function CodeSwitchDemo() {
-  const [lang, setLang] = useState("en");
-  const [text, setText] = useState(SENTENCE);
-  const current = LANGS.find((l) => l.code === lang)?.label;
+  const [text, setText] = useState(DEFAULT);
+
+  const { top, ranked } = useMemo(() => {
+    if (text.trim().length < 3) return { top: null, ranked: [] };
+    const top = franc(text, { only: ONLY, minLength: 3 });
+    const ranked = francAll(text, { only: ONLY, minLength: 3 });
+    return { top: top === "und" ? null : top, ranked };
+  }, [text]);
 
   return (
     <section className="mt-10 rounded-xl border border-emerald-800 bg-emerald-900/40 p-6">
-      <p className="text-sm text-emerald-200">
-        Tell the spellchecker one language, then click into the box. Everything
-        outside that language gets flagged as a mistake.
-      </p>
-
-      <div className="mt-4 flex flex-wrap gap-2" role="group" aria-label="Spellcheck language">
-        {LANGS.map((l) => (
-          <button
-            key={l.code}
-            onClick={() => setLang(l.code)}
-            aria-pressed={lang === l.code}
-            className={`rounded-md border px-3 py-1 text-sm ${
-              lang === l.code
-                ? "border-emerald-400 bg-emerald-800 text-white"
-                : "border-emerald-700 text-emerald-100 hover:bg-emerald-800"
-            }`}
-          >
-            {l.label}
-          </button>
-        ))}
-      </div>
-
-      <label htmlFor="cs-input" className="sr-only">Sentence to spell-check</label>
+      <label htmlFor="cs-input" className="block text-sm text-emerald-200">
+        Type a sentence that moves between English, Spanish, and French.
+      </label>
       <textarea
-        key={lang}
         id="cs-input"
-        lang={lang}
-        spellCheck={true}
         value={text}
         onChange={(e) => setText(e.target.value)}
         rows={3}
-        className="mt-4 w-full rounded-md border border-emerald-700 bg-emerald-950 p-3 text-lg text-emerald-50 [font-family:var(--font-atkinson)]"
+        className="mt-2 w-full rounded-md border border-emerald-700 bg-emerald-950 p-3 text-lg text-emerald-50 [font-family:var(--font-atkinson)]"
       />
 
-      <p className="mt-3 text-sm text-emerald-300" aria-live="polite">
-        Spellcheck set to <span className="font-semibold">{current}</span>. What
-        gets flagged depends on your browser and operating system, so this is an
-        illustration, not a measurement.
-      </p>
+      <div className="mt-5" aria-live="polite">
+        {top ? (
+          <>
+            <p className="text-emerald-100">
+              The detector labels this as{" "}
+              <span className="font-bold text-white">{NAMES[top]}</span>.
+            </p>
+            <ul className="mt-3 space-y-2">
+              {ranked.map(([code, score]) => (
+                <li key={code} className="flex items-center gap-3 text-sm">
+                  <span className="w-16 shrink-0 text-emerald-100">{NAMES[code]}</span>
+                  <span className="h-3 flex-1 rounded bg-emerald-950 overflow-hidden">
+                    <span
+                      className={`block h-full rounded ${code === top ? "bg-emerald-300" : "bg-emerald-700"}`}
+                      style={{ width: `${Math.round(score * 100)}%` }}
+                    />
+                  </span>
+                  <span className="w-10 shrink-0 text-right text-emerald-200">
+                    {score.toFixed(2)}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-4 text-sm text-emerald-300">
+              The other languages are right there in the runner-up scores. The
+              system just has no way to say your sentence is all of them at once.
+            </p>
+          </>
+        ) : (
+          <p className="text-sm text-emerald-300">Keep typing to see what it decides.</p>
+        )}
+      </div>
     </section>
   );
 }

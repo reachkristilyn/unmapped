@@ -8,7 +8,7 @@ const links = [
   { href: "/gaps/screen-readers", label: "Screen Readers" },
   { href: "/gaps/motor-accessibility", label: "Motor Accessibility" },
   { href: "/gaps/code-switching", label: "Code-Switching" },
-  { href: "/map", label: "More Topics" }
+  { href: "/map", label: "Accessibility Gaps" }
 ];
 
 export default function Nav() {

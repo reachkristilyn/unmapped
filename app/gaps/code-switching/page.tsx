@@ -23,9 +23,9 @@ export default function CodeSwitching() {
           machine as a mistake.
           </p>
           <p>
-          The demo below shows one small, everyday version of this. Your browser has a spellchecker set to a single language. 
-          Type a sentence that moves between languages, and watch it flag every word that doesn't belong to the one it was 
-          told to expect.
+          The demo below runs a real language detector, the kind of tool that decides which language a piece of text is in 
+          before anything else happens to it. Type a sentence that moves between languages, and watch it pick exactly one, 
+          flattening the rest into runner-up scores it sets aside.
           </p>
         </div>
         <CodeSwitchDemo />
