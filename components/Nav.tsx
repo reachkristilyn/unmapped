@@ -7,6 +7,7 @@ const links = [
   { href: "/gaps/tokenization", label: "Tokenization" },
   { href: "/gaps/screen-readers", label: "Screen Readers" },
   { href: "/gaps/motor-accessibility", label: "Motor Accessibility" },
+  { href: "/gaps/code-switching", label: "Code-Switching" },
   { href: "/map", label: "More Topics" }
 ];
 
