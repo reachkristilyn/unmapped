@@ -1,5 +1,5 @@
 import MandelbrotTile from "@/components/MandelbrotTile";
-import { gaps } from "@/data/gaps";
+import gaps from "@/data/gaps";
 
 export default function Home() {
   return (
