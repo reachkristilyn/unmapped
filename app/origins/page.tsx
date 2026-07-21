@@ -15,7 +15,9 @@ export default function Origins() {
         </p>
         <p className="mt-4 text-lg leading-relaxed text-emerald-50">
         We strive to meet WCAG AAA accessibility standards across this site. If anything falls 
-        short, or is simply bugging you, please let us know.
+        short, or is simply bugging you, <a href="mailto:kristi.eaton@columbia.edu" className="underline underline-offset-4 hover:text-white">
+        please let us know.
+          </a>
         </p>
 
         <div className="mt-12 h-[60vh]">
