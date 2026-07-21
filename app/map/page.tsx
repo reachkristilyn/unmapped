@@ -24,7 +24,7 @@ export default function FullMap() {
       <article className="mx-auto max-w-2xl">
         <h1 className="text-4xl font-bold [font-family:var(--font-atkinson)]">Accessibility Gaps</h1>
         <p className="mt-4 text-lg text-emerald-100">
-          Every gap in the series. The linked ones are live; the rest are charted and on the way.
+          Every gap in the series. Uncharted gaps are still in the works and will be live soon.
         </p>
 
         <ul className="mt-8 space-y-4 list-none">
