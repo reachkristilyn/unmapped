@@ -4,7 +4,7 @@ import { gaps } from "@/data/gaps";
 export default function Home() {
   return (
 <main id="main" className="bg-black text-white">
-      <div className="relative h-[52vh] overflow-hidden">
+      <div className="relative h-[48vh] overflow-hidden">
       <div className="absolute inset-0" aria-hidden="true">
           <MandelbrotTile cx={-0.75} cy={0} scale={1.75} hue={160} />
         </div>
@@ -19,7 +19,7 @@ export default function Home() {
   </p>*/}
       </div>
       </div>
-      <section aria-label="The gaps" className="relative z-10 bg-emerald-950 py-10">
+      <section aria-label="The gaps" className="relative z-10 bg-emerald-950 pt-2 pb-10">
         <ul className="flex gap-0 overflow-x-auto snap-x snap-mandatory list-none scrollbar-thin">
           {gaps.map(t => (
             <li key={t.title} className="relative snap-start shrink-0 w-[45vw] sm:w-[30vw] lg:w-[22vw] aspect-square overflow-hidden">

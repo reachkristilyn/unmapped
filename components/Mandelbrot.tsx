@@ -1,9 +1,12 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 
+const DEFAULT_VIEW = { cx: -0.75, cy: 0, scale: 1.75 };
+
 export default function Mandelbrot() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [view, setView] = useState({ cx: -0.75, cy: 0, scale: 1.75 });
+  const [view, setView] = useState(DEFAULT_VIEW);
+  const [active, setActive] = useState(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -39,7 +42,23 @@ export default function Mandelbrot() {
     ctx.putImageData(img, 0, 0);
   }, [view]);
 
+  // Wheel zoom only while active, via a non-passive listener so it
+  // never fights page scroll when the fractal is inert.
+  useEffect(() => {
+    if (!active) return;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const onWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      const factor = e.deltaY > 0 ? 1.2 : 0.8;
+      setView(v => ({ ...v, scale: v.scale * factor }));
+    };
+    canvas.addEventListener("wheel", onWheel, { passive: false });
+    return () => canvas.removeEventListener("wheel", onWheel);
+  }, [active]);
+
   function handleClick(e: React.MouseEvent<HTMLCanvasElement>) {
+    if (!active) { setActive(true); return; }
     const rect = e.currentTarget.getBoundingClientRect();
     const w = rect.width, h = rect.height;
     const aspect = w / h;
@@ -55,52 +74,71 @@ export default function Mandelbrot() {
       };
     });
   }
+
   function handleRightClick(e: React.MouseEvent<HTMLCanvasElement>) {
+    if (!active) return; // let the normal context menu appear when inert
     e.preventDefault();
     setView(v => ({ ...v, scale: v.scale * 1.4 }));
   }
-    function handleWheel(e: React.WheelEvent<HTMLCanvasElement>) {
-    const factor = e.deltaY > 0 ? 1.2 : 0.8;
-    setView(v => ({ ...v, scale: v.scale * factor }));
+
+  function handleKey(e: React.KeyboardEvent<HTMLCanvasElement>) {
+    if (e.key === "Escape") { setActive(false); setView(DEFAULT_VIEW); return; }
+    if (!active) {
+      if (e.key === "Enter" || e.key === " ") { setActive(true); e.preventDefault(); }
+      return;
     }
-    function handleKey(e: React.KeyboardEvent<HTMLCanvasElement>) {
-      const pan = view.scale * 0.2;
-      if (e.key === "+" || e.key === "=") setView(v => ({ ...v, scale: v.scale * 0.7 }));
-      else if (e.key === "-") setView(v => ({ ...v, scale: v.scale * 1.4 }));
-      else if (e.key === "ArrowLeft") setView(v => ({ ...v, cx: v.cx - pan }));
-      else if (e.key === "ArrowRight") setView(v => ({ ...v, cx: v.cx + pan }));
-      else if (e.key === "ArrowUp") setView(v => ({ ...v, cy: v.cy - pan }));
-      else if (e.key === "ArrowDown") setView(v => ({ ...v, cy: v.cy + pan }));
-      else return;
-      e.preventDefault();
-    }
+    const pan = view.scale * 0.2;
+    if (e.key === "+" || e.key === "=") setView(v => ({ ...v, scale: v.scale * 0.7 }));
+    else if (e.key === "-") setView(v => ({ ...v, scale: v.scale * 1.4 }));
+    else if (e.key === "ArrowLeft") setView(v => ({ ...v, cx: v.cx - pan }));
+    else if (e.key === "ArrowRight") setView(v => ({ ...v, cx: v.cx + pan }));
+    else if (e.key === "ArrowUp") setView(v => ({ ...v, cy: v.cy - pan }));
+    else if (e.key === "ArrowDown") setView(v => ({ ...v, cy: v.cy + pan }));
+    else return;
+    e.preventDefault();
+  }
 
   return (
     <div className="relative w-full h-full">
-     <canvas
+      <canvas
         ref={canvasRef}
         onClick={handleClick}
         onContextMenu={handleRightClick}
-        onWheel={handleWheel}
         onKeyDown={handleKey}
         tabIndex={0}
-        className="w-full h-full cursor-zoom-in"
-        aria-label="Interactive Mandelbrot fractal. Click or press plus to zoom in, right-click or minus to zoom out, arrow keys to pan."
+        className={`w-full h-full ${active ? "cursor-zoom-in" : "cursor-pointer"}`}
+        aria-label={
+          active
+            ? "Interactive Mandelbrot fractal. Click or press plus to zoom in, right-click or minus to zoom out, arrow keys to pan, Escape to exit."
+            : "Mandelbrot fractal backdrop. Click or press Enter to activate zooming."
+        }
       />
-     <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-4 rounded-xl bg-emerald-950/80 backdrop-blur-sm px-5 py-3">
-        <p className="text-sm font-semibold text-emerald-100 [font-family:var(--font-atkinson)]">
-          Interactive Mandelbrot
-        </p>
-        <p className="pointer-events-none hidden sm:block text-sm text-emerald-200">
-          Click or + to zoom · right-click or − to zoom out · arrows to pan
-        </p>
-        <button
-          onClick={() => setView({ cx: -0.75, cy: 0, scale: 1.75 })}
-          className="rounded-lg bg-emerald-300 px-4 py-2 text-sm font-semibold text-emerald-950 hover:bg-emerald-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-300"
-        >
-          Reset view
-        </button>
-      </div>
+
+      {!active ? (
+        <div className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2 rounded-xl bg-emerald-950/80 backdrop-blur-sm px-5 py-3">
+          <p className="text-sm font-semibold text-emerald-100 [font-family:var(--font-atkinson)]">
+            Click to explore the fractal
+          </p>
+        </div>
+      ) : (
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-4 rounded-xl bg-emerald-950/80 backdrop-blur-sm px-5 py-3">
+          <p className="pointer-events-none hidden sm:block text-sm text-emerald-200">
+            Click or + to zoom · right-click or − to zoom out · arrows to pan
+          </p>
+          <button
+            onClick={() => setView(DEFAULT_VIEW)}
+            className="rounded-lg bg-emerald-300 px-4 py-2 text-sm font-semibold text-emerald-950 hover:bg-emerald-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-300"
+          >
+            Reset view
+          </button>
+          <button
+            onClick={() => { setActive(false); setView(DEFAULT_VIEW); }}
+            className="rounded-lg border border-emerald-400 px-4 py-2 text-sm font-semibold text-emerald-100 hover:bg-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-300"
+          >
+            Exit
+          </button>
+        </div>
+      )}
     </div>
   );
 }
