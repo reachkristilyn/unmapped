@@ -5,7 +5,7 @@ import { franc, francAll } from "franc-min";
 
 const NAMES: Record<string, string> = { eng: "English", spa: "Spanish", fra: "French" };
 const ONLY = ["eng", "spa", "fra"];
-const DEFAULT = "Honestly je suis so tired hoy, pero let's still go de todos modos.";
+const DEFAULT = "Oui, je suis fatiguée, pero I slept bien. ¿Quieres una cerveza, ou should we get du vin?";
 
 export default function CodeSwitchDemo() {
   const [text, setText] = useState(DEFAULT);

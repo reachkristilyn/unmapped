@@ -4,10 +4,7 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 const links = [
-  { href: "/gaps/tokenization", label: "Tokenization" },
-  { href: "/gaps/screen-readers", label: "Screen Readers" },
-  { href: "/gaps/motor-accessibility", label: "Motor Accessibility" },
-  { href: "/gaps/code-switching", label: "Code-Switching" },
+  { href: "/", label: "Origins" },
   { href: "/map", label: "Accessibility Gaps" }
 ];
 
