@@ -84,7 +84,7 @@ export default function Nav() {
                   aria-current={pathname === "/map" ? "page" : undefined}
                   className="block rounded-lg px-3 py-2 text-sm font-semibold text-white hover:bg-emerald-800"
                 >
-                  All gaps
+                  Explore the Gaps
                 </Link>
                 <div className="my-1 h-px bg-emerald-800" aria-hidden="true" />
                 {live.map((g) => (
