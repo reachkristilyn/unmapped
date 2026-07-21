@@ -29,8 +29,7 @@ export default function Origins() {
           </h2>
           <p className="mt-3 text-base leading-relaxed text-emerald-100">
             Kristi Lyn Eaton is a writer, technologist, and experience designer with continued
-            computer science studies at Columbia University, where she supports research at the 
-            Robotics and Rehabilitation (ROAR) Lab. Her work brings together emerging technology, 
+            computer science studies at Columbia University. Her work brings together emerging technology, 
             accessibility, and advocacy, drawing on a background in nonprofit leadership and 
             experiential design. The Unmapped is where she connects those threads.
           </p>
