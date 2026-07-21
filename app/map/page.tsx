@@ -32,7 +32,7 @@ export default function FullMap() {
             <li key={t.title} className="relative aspect-[5/2] overflow-hidden rounded-xl">
               <MandelbrotTile cx={t.cx} cy={t.cy} scale={t.scale} hue={t.hue} />
               {t.href ? (
-                
+                <a
                   href={t.href}
                   className="absolute inset-0 flex items-center justify-center focus-visible:outline-4 focus-visible:-outline-offset-4 focus-visible:outline-white"
                 >
