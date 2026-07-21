@@ -1,14 +1,5 @@
 import MandelbrotTile from "@/components/MandelbrotTile";
-
-const tiles = [
-  { title: "Tokenization Inequality", href: "/gaps/tokenization", cx: -0.7453, cy: 0.1127, scale: 0.02, hue: 180 },
-  { title: "Screen Readers", href: "/gaps/screen-readers", cx: -0.16, cy: 1.0405, scale: 0.06, hue: 270 },
-  { title: "Motor Accessibility", href: "/gaps/motor-accessibility", cx: -1.25066, cy: 0.02012, scale: 0.005, hue: 40 },
-  { title: "Code-Switching", href: "/gaps/code-switching", cx: -0.7269, cy: 0.1889, scale: 0.01, hue: 300 },
-  { title: "Low-resource languages", cx: 0.2925, cy: 0.0149, scale: 0.01, hue: 330 },
-  { title: "Cognitive load & plain language", cx: -0.5251993, cy: 0.5251993, scale: 0.03, hue: 100 },
-  { title: "AAC devices & LLMs", cx: -0.7746806, cy: 0.1374168, scale: 0.008, hue: 210 },
-];
+import { gaps } from "@/data/gaps";
 
 export default function Home() {
   return (
@@ -30,7 +21,7 @@ export default function Home() {
       </div>
       <section aria-label="The gaps" className="relative z-10 bg-emerald-950 py-10">
         <ul className="flex gap-0 overflow-x-auto snap-x snap-mandatory list-none scrollbar-thin">
-          {tiles.map(t => (
+          {gaps.map(t => (
             <li key={t.title} className="relative snap-start shrink-0 w-[45vw] sm:w-[30vw] lg:w-[22vw] aspect-square overflow-hidden">
               <MandelbrotTile cx={t.cx} cy={t.cy} scale={t.scale} hue={t.hue} />
               {t.href ? (
