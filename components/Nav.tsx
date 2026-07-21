@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 const links = [
-  { href: "/", label: "Origins" },
+  { href: "/origins", label: "Origins" },
   { href: "/map", label: "Accessibility Gaps" }
 ];
 
