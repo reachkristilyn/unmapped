@@ -30,10 +30,10 @@ export default function CodeSwitchDemo() {
         className="mt-2 w-full rounded-md border border-emerald-700 bg-emerald-950 p-3 text-lg text-emerald-50 [font-family:var(--font-atkinson)]"
       />
 
-      <div className="mt-5" aria-live="polite">
+      <div className="mt-5">
         {top ? (
           <>
-            <p className="text-emerald-100">
+            <p className="text-emerald-100" aria-live="polite">
               The detector labels this as{" "}
               <span className="font-bold text-white">{NAMES[top]}</span>.
             </p>
@@ -41,7 +41,7 @@ export default function CodeSwitchDemo() {
               {ranked.map(([code, score]) => (
                 <li key={code} className="flex items-center gap-3 text-sm">
                   <span className="w-16 shrink-0 text-emerald-100">{NAMES[code]}</span>
-                  <span className="h-3 flex-1 rounded bg-emerald-950 overflow-hidden">
+                  <span aria-hidden="true" className="h-3 flex-1 rounded bg-emerald-950 overflow-hidden">
                     <span
                       className={`block h-full rounded ${code === top ? "bg-emerald-300" : "bg-emerald-700"}`}
                       style={{ width: `${Math.round(score * 100)}%` }}

@@ -29,8 +29,8 @@ export default function FullMap() {
                 </a>
               ) : (
                 <p className="absolute inset-0 flex items-center justify-center">
-                  <span className="rounded-lg bg-emerald-950/75 px-4 py-2 text-emerald-200 text-sm text-center">
-                    {t.title} · uncharted
+                 <span className="rounded-lg bg-emerald-950/90 px-4 py-2 text-emerald-50 text-sm text-center">
+                    {t.title} <span aria-hidden="true">·</span> uncharted
                   </span>
                 </p>
               )}
@@ -40,7 +40,7 @@ export default function FullMap() {
 
         <p className="mt-8 text-lg text-emerald-100">
           Have a story or topic to add?{" "}
-          <a href="mailto:kristi.eaton@columbia.edu" className="underline underline-offset-4 hover:text-white">
+          <a href="mailto:kristi.eaton@columbia.edu" aria-label="Send it my way, by email" className="underline underline-offset-4 hover:text-white">
             Send it my way!
           </a>
         </p>

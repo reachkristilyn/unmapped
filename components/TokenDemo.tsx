@@ -3,9 +3,9 @@ import { useState } from "react";
 import { encode } from "gpt-tokenizer";
 
 const samples = [
-  { lang: "English", text: "Hello, how are you today?" },
-  { lang: "Japanese", text: "こんにちは、今日はお元気ですか？" },
-  { lang: "Spanish", text: "Hola, ¿cómo estás hoy?" },
+    { lang: "English", code: "en", text: "Hello, how are you today?" },
+    { lang: "Japanese", code: "ja", text: "こんにちは、今日はお元気ですか？" },
+    { lang: "Spanish", code: "es", text: "Hola, ¿cómo estás hoy?" },
 ];
 
 export default function TokenDemo() {
@@ -24,7 +24,7 @@ export default function TokenDemo() {
       <ul className="mt-4 space-y-2">
         {samples.map(s => (
           <li key={s.lang} className="flex justify-between gap-4 text-emerald-50">
-            <span>{s.lang}: {s.text}</span>
+            <span>{s.lang}: <span lang={s.code}>{s.text}</span></span>
             <span className="font-bold whitespace-nowrap">{encode(s.text).length} tokens</span>
           </li>
         ))}
@@ -39,7 +39,9 @@ export default function TokenDemo() {
         className="mt-2 w-full rounded-lg bg-emerald-950 border border-emerald-700 px-4 py-2 text-white"
         placeholder="Type in any language"
       />
-      {input && <p className="mt-3 font-bold">{count} tokens</p>}
+      <p aria-live="polite" className="mt-3 font-bold">
+        {input && `${count} tokens`}
+      </p>
     </div>
   );
 }

@@ -20,7 +20,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: { default: "The Unmapped", template: "%s — The Unmapped" },
     description: "Exploring the accessibility gaps in AI and the technology around it.",
 };
@@ -35,15 +35,15 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${atkinson.variable} h-full antialiased`}
     >
-      <body>
+     <body>
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-white focus:text-emerald-950 focus:px-4 focus:py-2 focus:z-50">Skip to content</a>
       <Nav />
         {children}
         <footer className="bg-emerald-950 border-t border-emerald-800 px-8 py-6 text-center text-sm text-emerald-100">
           <p>The Unmapped</p>
           <p className="mt-1">
-            © {new Date().getFullYear()} Kristi Lyn Eaton ·{" "}
-            <a href="mailto:kristi.eaton@columbia.edu" className="underline underline-offset-4 hover:text-white">
+            © {new Date().getFullYear()} Kristi Lyn Eaton <span aria-hidden="true">·</span>{" "}
+            <a href="mailto:kristi.eaton@columbia.edu" aria-label="Contact by email" className="underline underline-offset-4 hover:text-white">
               Contact
             </a>
           </p>

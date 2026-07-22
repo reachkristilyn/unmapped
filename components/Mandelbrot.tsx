@@ -109,10 +109,14 @@ export default function Mandelbrot() {
         className={`w-full h-full ${active ? "cursor-zoom-in" : "cursor-pointer"}`}
         aria-label={
           active
-            ? "Interactive Mandelbrot fractal. Click or press plus to zoom in, right-click or minus to zoom out, arrow keys to pan, Escape to exit."
-            : "Mandelbrot fractal backdrop. Click or press Enter to activate zooming."
+          ? "Interactive Mandelbrot fractal: a dark green shape with a rounded body and endlessly branching, feathery edges, drawn in greens against a deep green background. Click or press plus to zoom in, right-click or minus to zoom out, arrow keys to pan, Escape to exit."
+          : "Mandelbrot fractal backdrop: a dark green shape with a rounded body and endlessly branching, feathery edges, drawn in greens against a deep green background. Click or press Enter to explore it."
         }
       />
+
+      <p className="sr-only" aria-live="polite">
+        {active ? "Fractal exploration active. Arrow keys pan, plus and minus zoom, Escape exits." : ""}
+      </p>
 
       {!active ? (
         <div className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2 rounded-xl bg-emerald-950/80 backdrop-blur-sm px-5 py-3">
@@ -123,7 +127,7 @@ export default function Mandelbrot() {
       ) : (
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-4 rounded-xl bg-emerald-950/80 backdrop-blur-sm px-5 py-3">
           <p className="pointer-events-none hidden sm:block text-sm text-emerald-200">
-            Click or + to zoom · right-click or − to zoom out · arrows to pan
+          Click or + to zoom <span aria-hidden="true">·</span> right-click or − to zoom out <span aria-hidden="true">·</span> arrows to pan
           </p>
           <button
             onClick={() => setView(DEFAULT_VIEW)}

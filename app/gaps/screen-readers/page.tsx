@@ -20,8 +20,13 @@ export default function ScreenReaders() {
           The demo below lets you compare two ways a screen reader might experience the same AI response.
           </p>
         </div>
+        <p className="mt-8 rounded-lg border border-emerald-700 bg-emerald-900/40 px-4 py-3 text-base text-emerald-50">
+          Note: the demo below is a visual simulation of screen reader output. It is not
+          live screen reader audio, and it will not interfere with a screen reader you may
+          already be using.
+        </p>
         <StreamingDemo /> 
-        <Waypoints items={[
+        <Waypoints heading="Mapping screen readers" items={[
           "Announce complete thoughts, not every token. Batch streaming updates into stable, readable chunks.",
           "Strip markdown symbols from what gets read aloud. Asterisks are formatting, not content.",
           "Give users control over when and how much is announced, instead of deciding for them.",

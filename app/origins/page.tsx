@@ -15,12 +15,12 @@ export default function Origins() {
         </p>
         <p className="mt-4 text-lg leading-relaxed text-emerald-50">
         We strive to meet WCAG AAA accessibility standards across this site. If anything falls 
-        short, or is simply bugging you, <a href="mailto:kristi.eaton@columbia.edu" className="underline underline-offset-4 hover:text-white">
+        short, or is simply bugging you, <a href="mailto:kristi.eaton@columbia.edu" aria-label="Report an accessibility issue by email" className="underline underline-offset-4 hover:text-white">
         please let us know.
           </a>
         </p>
         <section className="mt-12 border-t border-emerald-800 pt-8">
-          <h2 className="text-sm font-semibold uppercase tracking-wide text-emerald-300">
+        <h2 className="text-2xl font-bold text-emerald-300 [font-family:var(--font-atkinson)]">
             Mandelbrot Fractals
           </h2>
         <p className="mt-10 text-lg leading-relaxed text-emerald-100">
@@ -36,7 +36,7 @@ export default function Origins() {
         </div>
         </section>
         <section className="mt-12 border-t border-emerald-800 pt-8">
-          <h2 className="text-sm font-semibold uppercase tracking-wide text-emerald-300">
+        <h2 className="text-2xl font-bold text-emerald-300 [font-family:var(--font-atkinson)]">
             About the author
           </h2>
           <p className="mt-3 text-base leading-relaxed text-emerald-100">

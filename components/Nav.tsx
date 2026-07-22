@@ -63,12 +63,18 @@ export default function Nav() {
             Origins
           </Link>
 
-          <div className="relative" ref={dropdownRef}>
+          <div
+            className="relative"
+            ref={dropdownRef}
+            onBlur={(e) => {
+              if (!e.currentTarget.contains(e.relatedTarget as Node)) setGapsOpen(false);
+            }}
+          >
             <button
               ref={gapsBtnRef}
               onClick={() => setGapsOpen((o) => !o)}
               aria-expanded={gapsOpen}
-              aria-haspopup="true"
+              aria-controls="gaps-dropdown"
               className={`flex items-center gap-1 ${linkClass(gapsActive)}`}
             >
               Accessibility Gaps
@@ -78,7 +84,7 @@ export default function Nav() {
             </button>
 
             {gapsOpen && (
-              <div className="absolute right-0 mt-3 w-64 rounded-xl border border-emerald-800 bg-emerald-950/95 backdrop-blur-sm p-2 shadow-xl">
+              <div id="gaps-dropdown" className="absolute right-0 mt-3 w-64 rounded-xl border border-emerald-800 bg-emerald-950/95 backdrop-blur-sm p-2 shadow-xl">
                 <Link
                   href="/map"
                   aria-current={pathname === "/map" ? "page" : undefined}
@@ -132,14 +138,14 @@ export default function Nav() {
           >
             Accessibility Gaps
           </Link>
-          <ul className="mt-1 flex flex-col gap-2 border-l border-emerald-800 pl-4 list-none">
+          <ul aria-label="Individual gaps" className="mt-1 flex flex-col gap-2 border-l border-emerald-800 pl-4 list-none">
             {live.map((g) => (
               <li key={g.href}>
                 <Link
                   href={g.href!}
                   onClick={() => setMobileOpen(false)}
                   aria-current={pathname === g.href ? "page" : undefined}
-                  className={pathname === g.href ? "text-white" : "text-emerald-200 hover:text-white"}
+                  className={pathname === g.href ? "text-white" : "text-emerald-100 hover:text-white"}
                 >
                   {g.title}
                 </Link>

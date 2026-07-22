@@ -27,12 +27,20 @@ export default function KeyboardDemo() {
           >
             Submit
           </button>
-          {goodDone && <p className="mt-3 text-emerald-300">Submitted. Easy, right?</p>}
+          <p aria-live="polite" className="mt-3 text-emerald-300">
+            {goodDone && "Submitted. Easy, right?"}
+          </p>
         </div>
 
         {/* Broken version: divs styled as controls */}
         <div className="rounded-xl bg-emerald-950 p-5">
-          <h3 className="font-bold">Form B</h3>
+        <h3 className="font-bold">Form B</h3>
+          <p className="sr-only">
+            This form is intentionally broken. The controls below are styled div
+            elements rather than real form fields, so they cannot be reached by
+            keyboard or announced properly. This is a demonstration of
+            inaccessible markup, not a working form.
+          </p>
           <div className="mt-3 block text-sm">Name</div>
           <div className="mt-1 w-full rounded bg-emerald-900 border border-emerald-700 px-3 py-2 min-h-[2.5rem]" />
           <div

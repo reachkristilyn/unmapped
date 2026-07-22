@@ -20,14 +20,14 @@ export default function MotorAccessibility() {
             or tongue-driven cursors, that assumption is the first locked door.
           </p>
           <p>
-            The demos below let you feel the problem instead of reading about
-            it.
+            The demos below let you test the problem directly.
+          
           </p>
           </div>
           <TargetSizeDemo />
           <KeyboardDemo />
           <FatigueDemo />
-          <Waypoints items={[
+          <Waypoints heading="Mapping motor accessibility" items={[
           "Meet target size minimums as a floor, not a ceiling. Fingers, tremors, and pointers all need room.",
           "Build with semantic HTML so every assistive device can reach every control.",
           "Count the actions your design demands, then cut them. Every click is a cost someone pays in effort.",

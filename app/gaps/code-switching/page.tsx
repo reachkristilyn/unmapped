@@ -29,7 +29,7 @@ export default function CodeSwitching() {
           </p>
         </div>
         <CodeSwitchDemo />
-        <Waypoints items={[
+        <Waypoints heading="Mapping code-switching" items={[
           "Train language detection to recognize multiple active languages in one input instead of forcing a single choice.",
           "Build tokenizers on genuinely multilingual, code-mixed text so switched-in words aren't penalized as leftovers.",
           "Test speech recognition on real code-switched speech, not just clean monolingual audio, and report where it breaks.",

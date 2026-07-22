@@ -2,6 +2,9 @@
 import { useState } from "react";
 
 const options = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+const days: Record<string, string> = {
+  Mon: "Monday", Tue: "Tuesday", Wed: "Wednesday", Thu: "Thursday", Fri: "Friday",
+};
 
 export default function FatigueDemo() {
   const [badStep, setBadStep] = useState(0);
@@ -24,7 +27,9 @@ export default function FatigueDemo() {
         {/* Costly version: stepper through options one at a time */}
         <div className="rounded-xl bg-emerald-950 p-5">
           <h3 className="font-bold">Design A</h3>
-          <p className="mt-3 text-sm text-emerald-100">Day: <span className="font-bold">{options[badStep]}</span></p>
+          <p aria-live="polite" className="mt-3 text-sm text-emerald-50">
+            Day: <span className="font-bold">{options[badStep]}</span>
+          </p>
           <div className="mt-3 flex gap-2">
             <button
               onClick={() => { setBadStep(s => (s + options.length - 1) % options.length); setBadActions(a => a + 1); }}
@@ -47,8 +52,10 @@ export default function FatigueDemo() {
               Confirm
             </button>
           </div>
-          <p className="mt-3 text-sm">Actions used: <span className="font-bold">{badActions}</span></p>
-          {badDone && <p className="mt-1 text-amber-300 text-sm">Done in {badActions} actions.</p>}
+          <p aria-live="polite" className="mt-3 text-sm">
+            Actions used: <span className="font-bold">{badActions}</span>
+            {badDone && ` — done in ${badActions} actions.`}
+          </p>
         </div>
 
         {/* Efficient version: direct buttons */}
@@ -57,16 +64,19 @@ export default function FatigueDemo() {
           <div className="mt-3 flex flex-wrap gap-2">
             {options.map(o => (
               <button
-                key={o}
-                onClick={() => { setGoodDone(true); setGoodActions(a => a + 1); }}
-                className="rounded-lg bg-emerald-800 px-4 py-2 hover:bg-emerald-700"
-              >
-                {o}
-              </button>
+              key={o}
+              onClick={() => { setGoodDone(true); setGoodActions(a => a + 1); }}
+              aria-label={`Choose ${days[o]}`}
+              className="rounded-lg bg-emerald-800 px-4 py-2 hover:bg-emerald-700"
+            >
+              {o}
+            </button>
             ))}
           </div>
-          <p className="mt-3 text-sm">Actions used: <span className="font-bold">{goodActions}</span></p>
-          {goodDone && <p className="mt-1 text-emerald-300 text-sm">Done in {goodActions} action{goodActions === 1 ? "" : "s"}.</p>}
+          <p aria-live="polite" className="mt-3 text-sm">
+            Actions used: <span className="font-bold">{goodActions}</span>
+            {goodDone && ` — done in ${goodActions} action${goodActions === 1 ? "" : "s"}.`}
+          </p>
         </div>
       </div>
 
