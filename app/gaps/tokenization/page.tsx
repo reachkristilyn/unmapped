@@ -34,7 +34,7 @@ export default function Tokenization() {
       </article>
       <section
   aria-labelledby="sources-and-contributors"
-  className="mt-20 border-t border-emerald-700/60 pt-10"
+  className="mt-20 border-t border-emerald-700/60 pt-10 pl-4"
 >
   <h2
     id="sources-and-contributors"
