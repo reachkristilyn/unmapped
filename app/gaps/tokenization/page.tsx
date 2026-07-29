@@ -101,21 +101,15 @@ export default function Tokenization() {
             EMNLP 2023.
           </p>
         </li>
-
         <li>
-          <a
-            href="https://github.com/openai/tiktoken"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-medium text-emerald-200 underline decoration-emerald-500 underline-offset-4 hover:text-white"
-          >
-                gpt-tokenizer
-  </a>
+  <p className="font-medium text-emerald-200">
+    gpt-tokenizer
+  </p>
   <p className="mt-1 text-sm leading-relaxed text-emerald-200/80">
-    The open-source JavaScript tokenizer used in this page’s
-    interactive demonstration. It is based on OpenAI’s tiktoken.
-    </p>
-        </li>
+    The JavaScript tokenizer used to power this page’s interactive
+    demonstration.
+  </p>
+</li>
       </ul>
     </div>
   </div>
