@@ -109,11 +109,12 @@ export default function Tokenization() {
             rel="noopener noreferrer"
             className="font-medium text-emerald-200 underline decoration-emerald-500 underline-offset-4 hover:text-white"
           >
-            OpenAI tiktoken
-          </a>
-          <p className="mt-1 text-sm leading-relaxed text-emerald-200/80">
-            The tokenizer used in this page’s interactive demonstration.
-          </p>
+                gpt-tokenizer
+  </a>
+  <p className="mt-1 text-sm leading-relaxed text-emerald-200/80">
+    The open-source JavaScript tokenizer used in this page’s
+    interactive demonstration. It is based on OpenAI’s tiktoken.
+    </p>
         </li>
       </ul>
     </div>
